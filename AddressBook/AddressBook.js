@@ -95,14 +95,14 @@ function addcontact(firstName,lastName,address,city,state,zip,phoneNumber,email)
         console.error(error);
     }
 }
-function findByName(firstName,lastName){
+function findByName(firstName,lastName){ //function for finding by name of person
     return contactList.find(contact=>contact.firstName==firstName && contact.lastName==lastName);
 
 }
-function editContact(firstName,lastName,newDetails){
+function editContact(firstName,lastName,newDetails){// function for editing contact
     let contact=findByName(firstName,lastName);
     if(contact){
-        for(let key in newDetails){
+        for(let key in newDetails){ //
             if(contact.hasOwnProperty(key)){
                 
                 contact[key]=newDetails[key];
@@ -125,11 +125,19 @@ function deleteContactByName(firstName,lastName){
         console.log("Contact Not Found");
     }
 }
+function countLength(){
+    return contactList.length;
+}
 // Try creating a new AddressBookData object and log it to the console
 addcontact("Rahul","Roy","HNo 90 Kamal Nagar","Bhopal","Madhya Pradesh","460201",6668844521,"rhjk@gmail.com");
 addcontact("Harish","Singh","HNo 09 Mahakal Lok","Indore","Madhya Pradesh","995623",7755216342,"hk11l@gmail.com");
 editContact("Rahul", "Roy", { _city: "Indore", _state: "Madhya Pardesh", _phoneNumber:8966452317});
 contactList.forEach(contact => console.log(contact.toString()));
 deleteContactByName("Rahul","Roy");
+addcontact("Rajesh","Raman","HNo 91 Kamala Nagar","Bhopal","Madhya Pradesh","460209",6878834521,"rghl@gmail.com");
+addcontact("Kamal","Ram","HNo 98 Rajesh  Nagar","Bhopal","Madhya Pradesh","660301",9665848521,"klhjk@gmail.com");
+addcontact("Hamid","Ali","HNo 190 Kajal Colony","Bhopal","Madhya Pradesh","661201",6868543511,"h51jk@gmail.com");
+let len=countLength();
+console.log("The Number of Contact in Address Book: "+len);
 // Display all contacts in the Address Book
 contactList.forEach(contact => console.log(contact.toString()));
