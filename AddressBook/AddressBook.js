@@ -142,7 +142,7 @@ function findByCity(city){
 }
 // Function to find contacts in a particular state
 function findByState(state){
-    return contactList.filter(contact=>contact._state==state);
+    return contactList.filter(contact=>contact.state==state);
 }
 // Function to view persons by city
 function viewByCity(city){
@@ -166,6 +166,16 @@ function viewByState(state){
         console.log("No Contact Found:");
     }
 }
+//Method to get Number of contact per city
+function countByCity(city){
+    let contactInCity=findByCity(city);
+    return contactInCity.length;
+}
+//Method to get Number of contact per state;
+function countByState(state){
+    let contactsInState=findByState(state);
+    return contactsInState.length;
+}
 // Try creating a new AddressBookData object and log it to the console
 addcontact("Rahul","Roy","HNo 90 Kamal Nagar","Bhopal","Madhya Pradesh","460201",6668844521,"rhjk@gmail.com");
 addcontact("Harish","Singh","HNo 09 Mahakal Lok","Indore","Madhya Pradesh","995623",7755216342,"hk11l@gmail.com");
@@ -187,3 +197,6 @@ addcontact("Hamid","Ali","HNo 190 Kajal Colony","Bhopal","Madhya Pradesh","66120
 viewByCity("Bhopal");
 //Calling Methos 
 viewByState("Madhya Pradesh");
+
+console.log("Count By City: ",countByCity("Bhopal"));
+console.log("Count By State:",countByState("Madhya Pradesh"));
