@@ -176,6 +176,19 @@ function countByState(state){
     let contactsInState=findByState(state);
     return contactsInState.length;
 }
+// Function to sort the address book entries alphabetically by a person's name
+function sortContacts() {
+    contactList.sort((a, b) => {
+        if (a.firstName.toLowerCase() < b.firstName.toLowerCase()) return -1;
+        if (a.firstName.toLowerCase() > b.firstName.toLowerCase()) return 1;
+        if (a.lastName.toLowerCase() < b.lastName.toLowerCase()) return -1;
+        if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) return 1;
+        return 0;
+    });
+    console.log("Address book sorted alphabetically by person's name:");
+    contactList.forEach(contact => console.log(contact.toString()));
+}
+
 // Try creating a new AddressBookData object and log it to the console
 addcontact("Rahul","Roy","HNo 90 Kamal Nagar","Bhopal","Madhya Pradesh","460201",6668844521,"rhjk@gmail.com");
 addcontact("Harish","Singh","HNo 09 Mahakal Lok","Indore","Madhya Pradesh","995623",7755216342,"hk11l@gmail.com");
@@ -200,3 +213,5 @@ viewByState("Madhya Pradesh");
 
 console.log("Count By City: ",countByCity("Bhopal"));
 console.log("Count By State:",countByState("Madhya Pradesh"));
+//Calling Method for Sorted Data By name
+sortContacts();
