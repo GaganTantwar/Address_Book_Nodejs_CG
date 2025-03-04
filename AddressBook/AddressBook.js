@@ -185,7 +185,26 @@ function sortContacts() {
         if (a.lastName.toLowerCase() > b.lastName.toLowerCase()) return 1;
         return 0;
     });
+    
     console.log("Address book sorted alphabetically by person's name:");
+    contactList.forEach(contact => console.log(contact.toString()));
+}
+function sortByCity(){
+    contactList.sort((a, b) => {
+        if (a.city.toLowerCase() < b.city.toLowerCase()) return -1;
+        if (a.city.toLowerCase() > b.city.toLowerCase()) return 1;
+        return 0;
+    });
+    console.log("Address book sorted alphabetically by city:");
+    contactList.forEach(contact => console.log(contact.toString()));
+}
+function sortByState(){
+    contactList.sort((a, b) => {
+        if (a.state.toLowerCase() < b.state.toLowerCase()) return -1;
+        if (a.state.toLowerCase() > b.state.toLowerCase()) return 1;
+        return 0;
+    });
+    console.log("Address book sorted alphabetically by state ");
     contactList.forEach(contact => console.log(contact.toString()));
 }
 
@@ -215,3 +234,8 @@ console.log("Count By City: ",countByCity("Bhopal"));
 console.log("Count By State:",countByState("Madhya Pradesh"));
 //Calling Method for Sorted Data By name
 sortContacts();
+//Calling Method for Sorted Data By City
+
+sortByCity();
+//Calling Method for Sorted Data By City
+sortByState();
