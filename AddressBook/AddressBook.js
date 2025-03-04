@@ -104,6 +104,9 @@ function findByName(firstName,lastName){ //function for finding by name of perso
     return contactList.find(contact=>contact.firstName==firstName && contact.lastName==lastName);
 
 }
+function findByCityOrState(city,state){ // find by name or city
+    return contactList.find(contact=>contact.city==city && contact.state==state);
+}
 function editContact(firstName,lastName,newDetails){// function for editing contact
     let contact=findByName(firstName,lastName);
     if(contact){
@@ -147,5 +150,6 @@ console.log("The Number of Contact in Address Book: "+len);
 // Display all contacts in the Address Book
 contactList.forEach(contact => console.log(contact.toString()));
 //Trying to add Duplicate Entry;
-
 addcontact("Hamid","Ali","HNo 190 Kajal Colony","Bhopal","Madhya Pradesh","661201",6868543511,"h51jk@gmail.com");
+let contact=findByCityOrState("Indore","Madhya Pradesh");
+console.log(contact);
