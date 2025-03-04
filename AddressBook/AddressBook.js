@@ -136,20 +136,54 @@ function deleteContactByName(firstName,lastName){
 function countLength(){
     return contactList.length;
 }
+// Function to find contacts in a particular city
+function findByCity(city){
+    return contactList.filter(contact => contact.city == city);
+}
+// Function to find contacts in a particular state
+function findByState(state){
+    return contactList.filter(contact=>contact._state==state);
+}
+// Function to view persons by city
+function viewByCity(city){
+    let contactsInCity=findByCity(city);
+    if(contactsInCity.length>0){
+        console.log("Contact in :"+city);
+        contactsInCity.forEach(contact => console.log(contact.toString()));
+    }
+    else{
+        console.log("No Contact Found:");
+    }
+}
+// Function to view persons by state
+function viewByState(state){
+    let contactsInState=findByState(state);
+    if(contactsInState.length>0){
+        console.log("Contact in :"+state);
+        contactsInState.forEach(contact => console.log(contact.toString()));
+    }
+    else{
+        console.log("No Contact Found:");
+    }
+}
 // Try creating a new AddressBookData object and log it to the console
 addcontact("Rahul","Roy","HNo 90 Kamal Nagar","Bhopal","Madhya Pradesh","460201",6668844521,"rhjk@gmail.com");
 addcontact("Harish","Singh","HNo 09 Mahakal Lok","Indore","Madhya Pradesh","995623",7755216342,"hk11l@gmail.com");
 editContact("Rahul", "Roy", { _city: "Indore", _state: "Madhya Pardesh", _phoneNumber:8966452317});
 contactList.forEach(contact => console.log(contact.toString()));
+//Delete contact method call
 deleteContactByName("Rahul","Roy");
 addcontact("Rajesh","Raman","HNo 91 Kamala Nagar","Bhopal","Madhya Pradesh","460209",6878834521,"rghl@gmail.com");
 addcontact("Kamal","Ram","HNo 98 Rajesh  Nagar","Bhopal","Madhya Pradesh","660301",9665848521,"klhjk@gmail.com");
 addcontact("Hamid","Ali","HNo 190 Kajal Colony","Bhopal","Madhya Pradesh","661201",6868543511,"h51jk@gmail.com");
+//length counter of address book
 let len=countLength();
 console.log("The Number of Contact in Address Book: "+len);
 // Display all contacts in the Address Book
 contactList.forEach(contact => console.log(contact.toString()));
 //Trying to add Duplicate Entry;
 addcontact("Hamid","Ali","HNo 190 Kajal Colony","Bhopal","Madhya Pradesh","661201",6868543511,"h51jk@gmail.com");
-let contact=findByCityOrState("Indore","Madhya Pradesh");
-console.log(contact);
+//Calling Method for getting list by Bhopal
+viewByCity("Bhopal");
+//Calling Methos 
+viewByState("Madhya Pradesh");
