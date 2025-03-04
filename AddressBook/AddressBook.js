@@ -83,11 +83,20 @@ class AddressBookData {
         return "First Name: "+this.firstName+" Last Name: "+this.lastName+" Address: "+this.address+" City: "+this.city+" State: "+this.state+" Zip: "+this.zip+" Phone Number: "+this.phoneNumber+" Email: "+this.email;
     }
 }
-
-// Try creating a new AddressBookData object and log it to the console
-try {
-    let addressbookdata = new AddressBookData("Gagan", "Tantwar", "Karond", "Bhopal", "Madhya Pradesh", "462038", "9666464981", "xyz@gmail.com");
-    console.log(addressbookdata.toString());  // Log the object to the console
-} catch (e) {
-    console.error(e);  // Log any errors to the console
+//Contact List Array
+let contactList=[]
+function addcontact(firstName,lastName,address,city,state,zip,phoneNumber,email){
+    try{
+        let newContact=new AddressBookData(firstName,lastName,address,city,state,zip,phoneNumber,email);
+        contactList.push(newContact);
+        console.log("Contact Added Successfully: ");
+    }
+    catch(error){
+        console.error(error);
+    }
 }
+// Try creating a new AddressBookData object and log it to the console
+addcontact("Rahul","Roy","HNo 90 Kamal Nagar","Bhopal","Madhya Pradesh","460201",6668844521,"rhjk@gmail.com");
+addcontact("Harish","Singh","HNo 09 Mahakal Lok","Indore","Madhya Pradesh","995623",7755216342,"hk11l@gmail.com");
+// Display all contacts in the Address Book
+contactList.forEach(contact => console.log(contact.toString()));
