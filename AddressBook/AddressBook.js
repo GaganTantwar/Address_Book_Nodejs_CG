@@ -87,6 +87,11 @@ class AddressBookData {
 let contactList=[]
 function addcontact(firstName,lastName,address,city,state,zip,phoneNumber,email){
     try{
+        let duplicate=findByName(firstName,lastName);
+        if(duplicate){
+            console.log("Duplicate Entry Not Accepted");
+            return;
+        }
         let newContact=new AddressBookData(firstName,lastName,address,city,state,zip,phoneNumber,email);
         contactList.push(newContact);
         console.log("Contact Added Successfully: ");
@@ -141,3 +146,6 @@ let len=countLength();
 console.log("The Number of Contact in Address Book: "+len);
 // Display all contacts in the Address Book
 contactList.forEach(contact => console.log(contact.toString()));
+//Trying to add Duplicate Entry;
+
+addcontact("Hamid","Ali","HNo 190 Kajal Colony","Bhopal","Madhya Pradesh","661201",6868543511,"h51jk@gmail.com");
