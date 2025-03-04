@@ -115,9 +115,21 @@ function editContact(firstName,lastName,newDetails){
         console.log("Contact Not  Found")
     }
 }
+function deleteContactByName(firstName,lastName){
+    let contactIndex=contactList.findIndex(contact=>contact.firstName==firstName && contact.lastName==lastName);
+    if(contactIndex!=-1){
+        contactList.splice(contactIndex,1);
+        console.log("Contact Deleted Successfully");
+    }
+    else{
+        console.log("Contact Not Found");
+    }
+}
 // Try creating a new AddressBookData object and log it to the console
 addcontact("Rahul","Roy","HNo 90 Kamal Nagar","Bhopal","Madhya Pradesh","460201",6668844521,"rhjk@gmail.com");
 addcontact("Harish","Singh","HNo 09 Mahakal Lok","Indore","Madhya Pradesh","995623",7755216342,"hk11l@gmail.com");
 editContact("Rahul", "Roy", { _city: "Indore", _state: "Madhya Pardesh", _phoneNumber:8966452317});
+contactList.forEach(contact => console.log(contact.toString()));
+deleteContactByName("Rahul","Roy");
 // Display all contacts in the Address Book
 contactList.forEach(contact => console.log(contact.toString()));
