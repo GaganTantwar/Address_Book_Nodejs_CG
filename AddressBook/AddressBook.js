@@ -74,7 +74,7 @@ class AddressBookData {
     set email(email) {
         let emailRegex = RegExp('^[a-zA-z0-9_+.-]+@[a-zA-Z0-9]+\\.[a-zA-Z]{2,}$');  // Email should be in valid format
         if (emailRegex.test(email)) {
-            this._email = email;
+            this._email = email; 9
         } else throw "Invalid Email";  // Throw error if validation fails
     }
 
@@ -95,8 +95,29 @@ function addcontact(firstName,lastName,address,city,state,zip,phoneNumber,email)
         console.error(error);
     }
 }
+function findByName(firstName,lastName){
+    return contactList.find(contact=>contact.firstName==firstName && contact.lastName==lastName);
+
+}
+function editContact(firstName,lastName,newDetails){
+    let contact=findByName(firstName,lastName);
+    if(contact){
+        for(let key in newDetails){
+            if(contact.hasOwnProperty(key)){
+                
+                contact[key]=newDetails[key];
+            }
+        }
+        console.log("Contact Edited Successfully");
+
+    }
+    else{
+        console.log("Contact Not  Found")
+    }
+}
 // Try creating a new AddressBookData object and log it to the console
 addcontact("Rahul","Roy","HNo 90 Kamal Nagar","Bhopal","Madhya Pradesh","460201",6668844521,"rhjk@gmail.com");
 addcontact("Harish","Singh","HNo 09 Mahakal Lok","Indore","Madhya Pradesh","995623",7755216342,"hk11l@gmail.com");
+editContact("Rahul", "Roy", { _city: "Indore", _state: "Madhya Pardesh", _phoneNumber:8966452317});
 // Display all contacts in the Address Book
 contactList.forEach(contact => console.log(contact.toString()));
